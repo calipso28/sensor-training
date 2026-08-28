@@ -1,0 +1,9 @@
+.app-sidebar {
+  height: 100vh;
+  padding: var(--spacing-lg);
+
+  background: var(--color-background);
+  border-right: var(--border-width) solid var(--color-border);
+
+  overflow-y: auto;
+}

@@ -1,0 +1,61 @@
+
+.radar-render-speed-control {
+  width: 35%;
+  min-width: 300px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  justify-self: flex-end;
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.radar-render-speed-control h2 {
+  margin: 0 0 var(--spacing-sm);
+  color: var(--color-text-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.radar-render-speed-control__options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.radar-render-speed-control button {
+  min-height: 32px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  font: inherit;
+  cursor: pointer;
+}
+
+.radar-render-speed-control button:first-child {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.radar-render-speed-control button:last-child {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.radar-render-speed-control button + button {
+  margin-left: calc(-1 * var(--border-width));
+}
+
+.radar-render-speed-control button:hover:not(.selected) {
+  background: var(--color-background);
+}
+
+.radar-render-speed-control button.selected {
+  position: relative;
+  color: var(--color-surface);
+  background: #0C234C;
+  border-color: #0C234C;
+}
+
+@media (max-width: 640px) {
+  .radar-render-speed-control {
+    width: 100%;
+  }
+}

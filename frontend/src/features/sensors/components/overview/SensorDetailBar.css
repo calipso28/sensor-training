@@ -1,0 +1,72 @@
+.sensor-detail-bar {
+  display: flex;
+  min-width: 750px;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+
+  padding: var(--spacing-md) var(--spacing-lg);
+
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.sensor-detail-bar__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.sensor-detail-bar__name {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.sensor-detail-bar__type {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}
+
+.sensor-detail-bar dl {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  margin: 0;
+}
+
+.sensor-detail-bar dl > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.sensor-detail-bar dt {
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+}
+
+.sensor-detail-bar dd {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.sensor-status {
+  font-size: 0.65rem;
+  line-height: 1;
+}
+
+.sensor-status.online {
+  color: var(--color-success);
+}
+
+.sensor-status.warning {
+  color: var(--color-warning);
+}
+
+.sensor-status.offline {
+  color: var(--color-error);
+}

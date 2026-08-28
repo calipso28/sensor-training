@@ -1,0 +1,16 @@
+.app-workspace {
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  background: var(--color-background);
+}
+
+.app-workspace > * {
+  width: 100%;
+  max-width: 1000px;
+  margin-inline: auto;
+}

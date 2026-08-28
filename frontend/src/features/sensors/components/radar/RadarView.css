@@ -1,0 +1,117 @@
+.radar-container {
+  width: 100%;
+}
+
+/* radar compass */
+.radar-compass-container {
+  padding: var(--spacing-md) 0;
+  background: var(--color-surface);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.radar-compass {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  max-width: 100%;
+  margin: 20px auto;
+  background: var(--color-surface);
+  border: 2px solid #ccc;
+  border-radius: 50%;
+}
+
+.radar-compass::before,
+.radar-compass::after {
+  content: "";
+  position: absolute;
+  background: #ddd;
+}
+
+.radar-compass::before {
+  width: 1px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+}
+
+.radar-compass::after {
+  width: 100%;
+  height: 1px;
+  left: 0;
+  top: 50%;
+}
+
+.radar-compass-label { position: absolute; font-weight: bold; }
+.radar-compass-north { top: 8px; left: 50%; transform: translateX(-50%); }
+.radar-compass-east { right: 8px; top: 50%; transform: translateY(-50%); }
+.radar-compass-south { bottom: 8px; left: 50%; transform: translateX(-50%); }
+.radar-compass-west { left: 8px; top: 50%; transform: translateY(-50%); }
+.radar-compass-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-weight: bold;
+}
+.radar-warning-zone {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.radar-warning-zone.warning {
+  border-color: #d00;
+}
+.radar-compass-object {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+}
+.radar-compass-object.warning {
+  color: #d00;
+}
+.radar-compass-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.radar-compass-legend-item { display: flex; gap: 6px; align-items: center; }
+.radar-compass-legend-item.warning { color: #d00; }
+
+/* radar objects */
+.radar-objects {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, 1fr);
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md) 0;
+}
+
+.radar-object-card {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--spacing-md);
+  box-sizing: border-box;
+  padding: 20px 10px;
+  background: var(--color-surface);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.radar-section {
+  min-width: 0;
+}
+
+.radar-section h4 {
+  margin: 0 0 var(--spacing-xs);
+}
+
+.radar-value {
+  margin: 0;
+}
+
