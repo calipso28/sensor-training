@@ -1,20 +1,12 @@
 import type { Sensor } from "../types/sensor";
+import { translateSensorType } from "./sensorTranslations";
 
 export function getSensorSummary(sensor: Sensor): string {
   switch (sensor.type) {
     case "radar":
       return "Radar";
 
-    case "temperature":
-      return "Temperature";
-
-    case "humidity":
-      return "Humidity";
-
-    case "pressure":
-      return "Pressure";
-
     default:
-      return "";
+      return translateSensorType(sensor.type);
   }
 }

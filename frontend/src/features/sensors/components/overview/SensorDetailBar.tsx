@@ -1,8 +1,14 @@
 import "./SensorDetailBar.css";
+import {
+  translateSensorName,
+  translateSensorType,
+} from "../../utils/sensorTranslations";
+import type { EnvironmentalSensor } from "../../types/environmentalSensor";
 import type { Sensor, SensorType } from "../../types/sensor";
 
 interface SensorDetailBarProps {
   sensor: Sensor | undefined;
+  measurement?: Pick<EnvironmentalSensor, "value" | "unit" | "timestamp">;
   radarConnectionStatus?: "connecting" | "connected" | "disconnected" | "error";
   environmentalLoading?: boolean;
   environmentalError?: string | null;
@@ -21,13 +27,14 @@ const connectionStatusLabels = {
 
 const sensorTypeLabels: Record<SensorType, string> = {
   radar: "Radar",
-  temperature: "Temperatur",
-  humidity: "Feuchtigkeit",
-  pressure: "Druck",
+  temperature: translateSensorType("temperature"),
+  humidity: translateSensorType("humidity"),
+  pressure: translateSensorType("pressure"),
 };
 
 function SensorDetailBar({
   sensor,
+  measurement,
   radarConnectionStatus,
   environmentalLoading = false,
   environmentalError = null,
@@ -49,7 +56,9 @@ function SensorDetailBar({
   return (
     <section className="sensor-detail-bar">
       <div className="sensor-detail-bar__info">
-        <h2 className="sensor-detail-bar__name">{sensor.name}</h2>
+        <h2 className="sensor-detail-bar__name">
+          {sensor.type === "radar" ? sensor.name : translateSensorName(sensor.name)}
+        </h2>
       </div>
       <dl>
         <div>
@@ -101,7 +110,7 @@ function SensorDetailBar({
               <div>
                 <dt>Messwert</dt>
                 <dd>
-                  {sensor.value} {sensor.unit}
+                  {measurement ? `${Math.round(measurement.value)} ${measurement.unit}` : "—"}
                 </dd>
               </div>
             </>

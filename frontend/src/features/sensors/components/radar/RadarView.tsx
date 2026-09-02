@@ -1,8 +1,8 @@
 import "./RadarView.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import RadarCompass from "./RadarCompass";
 import RadarObjectCard from "./RadarObjectCard";
-import type { RadarStatus, RadarSummary } from "../../types/radar";
+import type { RadarSummary } from "../../types/radar";
 import { useSensorContext } from "../../context/SensorContext";
 
 function getRadarCompassDirection(degrees: number): string {
@@ -16,22 +16,13 @@ interface RadarViewProps {
 }
 
 function RadarView({ onSummaryChange }: RadarViewProps) {
-  const [radarStatus, setRadarStatus] = useState<RadarStatus | null>(null);
   const {
     radarMeasurements,
     radarConnectionStatus,
+    radarStatus,
   } = useSensorContext();
   const radarVisualizationActive =
     radarConnectionStatus === "connected" && radarMeasurements.length > 0;
-
-  useEffect(() => {
-    fetch("http://localhost:8080/api/radar/status")
-      .then((response) => response.json())
-      .then((data: RadarStatus) => setRadarStatus(data))
-      .catch((error) => {
-        console.error("Fehler beim Abrufen des Radar-Status:", error);
-      });
-  }, []);
 
   useEffect(() => {
     onSummaryChange?.({

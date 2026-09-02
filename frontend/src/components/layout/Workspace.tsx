@@ -91,6 +91,7 @@ function Workspace() {
           <>
             <SensorDetailBar
               sensor={selectedSensor}
+              measurement={selectedEnvironmentalSensor}
               environmentalLoading={environmentalLoading}
               environmentalError={environmentalError}
               environmentalConnectionStatus={environmentalConnectionStatus}

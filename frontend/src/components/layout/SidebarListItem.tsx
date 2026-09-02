@@ -1,3 +1,4 @@
+import { translateSensorName } from "../../features/sensors/utils/sensorTranslations";
 import type { Sensor } from "../../features/sensors/types/sensor";
 import "./SidebarListItem.css";
 
@@ -37,7 +38,9 @@ function SidebarListItem({
       onClick={() => onSelect(sensor.id)}
     >
       <div className="sidebar-list-item__header">
-        <span className="sidebar-list-item__name">{sensor.name}</span>
+        <span className="sidebar-list-item__name">
+          {sensor.type === "radar" ? sensor.name : translateSensorName(sensor.name)}
+        </span>
 
       </div>
 

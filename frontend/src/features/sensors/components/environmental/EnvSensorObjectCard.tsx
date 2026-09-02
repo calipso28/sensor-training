@@ -1,3 +1,4 @@
+import { translateSensorName } from "../../utils/sensorTranslations";
 import type { Sensor } from "../../types/sensor";
 import type { EnvironmentalMeasurement } from "../../types/environmentalSensor";
 import "./EnvSensorObjectCard.css";
@@ -14,7 +15,7 @@ function EnvSensorObjectCard({
   return (
     <section className="env-sensor-object-card">
       <header className="env-sensor-object-card__header">
-        <h2>{sensor.name}</h2>
+        <h2>{translateSensorName(sensor.name)}</h2>
       </header>
 
       <div className="env-sensor-object-card__value">

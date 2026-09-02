@@ -27,16 +27,20 @@ function SidebarList() {
 
     return `${value} ${measurement.unit}`;
   };
+
   const radarSensors = sensors.filter(
     (sensor) => sensor.type === "radar",
   );
 
-  const environmentalSensorMetadata = sensors.filter(
-    (sensor) =>
-      sensor.type === "temperature" ||
-      sensor.type === "humidity" ||
-      sensor.type === "pressure",
-  );
+  const environmentalSensorMetadata = environmentalSensors.map((sensor) => ({
+    id: sensor.id,
+    name: `${sensor.type.charAt(0).toUpperCase()}${sensor.type.slice(1)} ${sensor.id.split("-").at(-1) ?? sensor.id}`,
+    location: "Umgebung",
+    type: sensor.type,
+    value: sensor.value,
+    unit: sensor.unit,
+    status: sensor.status,
+  }));
 
   return (
     <div className="sidebar-list">

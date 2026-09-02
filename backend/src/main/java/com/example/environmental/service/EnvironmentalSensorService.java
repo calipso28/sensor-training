@@ -38,13 +38,14 @@ public class EnvironmentalSensorService {
                 "%",
                 timestamp
             ),
-            create(
+            createWithStatus(
                 "humidity-02",
                 "humidity",
                 52.0,
                 2.0,
                 "%",
-                timestamp
+                timestamp,
+                "warning"
             ),
             create(
                 "pressure-01",
@@ -54,13 +55,13 @@ public class EnvironmentalSensorService {
                 "hPa",
                 timestamp
             ),
-            create(
+            createFixed(
                 "pressure-02",
                 "pressure",
                 1011.0,
-                1.5,
                 "hPa",
-                timestamp
+                timestamp,
+                "offline"
             )
         );
     }
@@ -73,6 +74,26 @@ public class EnvironmentalSensorService {
         String unit,
         long timestamp
     ) {
+        return createWithStatus(
+            id,
+            type,
+            baseValue,
+            variation,
+            unit,
+            timestamp,
+            "online"
+        );
+    }
+
+    private EnvironmentalSensor createWithStatus(
+        String id,
+        String type,
+        double baseValue,
+        double variation,
+        String unit,
+        long timestamp,
+        String status
+    ) {
         double value =
             baseValue
                 + (random.nextDouble() * 2 - 1) * variation;
@@ -83,7 +104,25 @@ public class EnvironmentalSensorService {
             value,
             unit,
             timestamp,
-            "online"
+            status
+        );
+    }
+
+    private EnvironmentalSensor createFixed(
+        String id,
+        String type,
+        double value,
+        String unit,
+        long timestamp,
+        String status
+    ) {
+        return new EnvironmentalSensor(
+            id,
+            type,
+            value,
+            unit,
+            timestamp,
+            status
         );
     }
 }
